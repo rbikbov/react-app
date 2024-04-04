@@ -1,6 +1,6 @@
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { useActions } from '../../hooks/useActions'
-import Paginator from '../Paginator/Paginator'
+import { Paginator } from '../Paginator/Paginator'
 
 export const TodosList: React.FC = () => {
   const state = useTypedSelector((state) => state.todo)
@@ -56,7 +56,7 @@ export const TodosList: React.FC = () => {
           onClick={handleTodosLoadBtnClicked}
           disabled={state.loading}
         >
-          Load todos
+          {state.todos.length ? 'Reload' : 'Load'} todos
         </button>
       </div>
     </div>

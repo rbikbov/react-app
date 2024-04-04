@@ -1,0 +1,15 @@
+.links {
+  display: inline-flex;
+  list-style: none;
+}
+.links__item {
+  margin: 8px;
+}
+.links__item:hover {
+  text-decoration: underline;
+}
+.links__item_active {
+  text-decoration: underline;
+  transform: scale(1.2);
+  transition: all linear 0.3s;
+}

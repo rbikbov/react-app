@@ -28,7 +28,7 @@ export const UsersList: React.FC = () => {
           onClick={handleUsersLoadBtnClicked}
           disabled={state.loading}
         >
-          Load users
+          {state.users.length ? 'Reload' : 'Load'} users
         </button>
       </div>
     </div>

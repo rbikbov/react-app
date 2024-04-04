@@ -9,7 +9,7 @@ interface Props {
   onPageChange: (n: number) => void
 }
 
-const Paginator: React.FC<Props> = ({
+export const Paginator: React.FC<Props> = ({
   itemsCount,
   pageSize,
   currentPage,
@@ -78,5 +78,3 @@ const Paginator: React.FC<Props> = ({
     </ul>
   )
 }
-
-export default Paginator
