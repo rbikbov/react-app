@@ -1,0 +1,29 @@
+.paginator {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+.paginator__item {
+  padding: 8px;
+  cursor: pointer;
+  border: 1px solid gray;
+  color: gray;
+}
+.paginator__item_active {
+  cursor: not-allowed;
+  border-color: blue;
+  color: blue;
+}
+.paginator__item_disabled {
+  cursor: not-allowed;
+  position: relative;
+}
+.paginator__item_disabled::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+}
