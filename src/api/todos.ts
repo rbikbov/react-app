@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { Todo } from '../types/todo'
-import { sleep } from '../utils/sleep'
+import { Todo } from '@/types/todo'
+import { sleep } from '@/utils/sleep'
 
 export const requestTodosList = async ({ page = 1, limit = 10 }) => {
   await sleep(1000)

@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { User } from '../types/user'
-import { sleep } from '../utils/sleep'
+import { User } from '@/types/user'
+import { sleep } from '@/utils/sleep'
 
 export const requestUsersList = async () => {
   await sleep(1000)

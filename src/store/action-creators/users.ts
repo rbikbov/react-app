@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux'
-import { UsersAction, UsersActionType } from '../../types/user'
-import { handlePromise } from '../../utils/handlePromise'
-import { requestUsersList } from '../../api/users'
+import { UsersAction, UsersActionType } from '@/types/user'
+import { handlePromise } from '@/utils/handlePromise'
+import { requestUsersList } from '@/api/users'
 
 export const fetchUsers = () => {
   return async (dispatch: Dispatch<UsersAction>) => {

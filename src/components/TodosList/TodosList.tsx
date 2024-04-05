@@ -1,6 +1,6 @@
-import { useTypedSelector } from '../../hooks/useTypedSelector'
-import { useActions } from '../../hooks/useActions'
-import { Paginator } from '../Paginator/Paginator'
+import { useTypedSelector } from '@/hooks/useTypedSelector'
+import { useActions } from '@/hooks/useActions'
+import { Paginator } from '@/components/Paginator/Paginator'
 
 export const TodosList: React.FC = () => {
   const state = useTypedSelector((state) => state.todo)
@@ -42,7 +42,7 @@ export const TodosList: React.FC = () => {
       ) : (
         <p>Todos not found</p>
       )}
-      {state.itemsCount && (
+      {!!state.itemsCount && (
         <Paginator
           loading={state.loading}
           itemsCount={state.itemsCount}

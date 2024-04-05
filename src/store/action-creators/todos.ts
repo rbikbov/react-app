@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux'
-import { TodosAction, TodosActionType } from '../../types/todo'
-import { handlePromise } from '../../utils/handlePromise'
-import { requestTodosList } from '../../api/todos'
+import { TodosAction, TodosActionType } from '@/types/todo'
+import { handlePromise } from '@/utils/handlePromise'
+import { requestTodosList } from '@/api/todos'
 
 export const fetchTodos = ({ page, limit } = { page: 1, limit: 10 }) => {
   return async (dispatch: Dispatch<TodosAction>) => {

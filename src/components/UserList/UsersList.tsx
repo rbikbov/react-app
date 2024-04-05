@@ -1,5 +1,5 @@
-import { useTypedSelector } from '../../hooks/useTypedSelector'
-import { useActions } from '../../hooks/useActions'
+import { useTypedSelector } from '@/hooks/useTypedSelector'
+import { useActions } from '@/hooks/useActions'
 
 export const UsersList: React.FC = () => {
   const state = useTypedSelector((state) => state.user)

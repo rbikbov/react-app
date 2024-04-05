@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom'
-import { LinksList } from '../../../components/LinksList/LinksList.tsx'
+import { LinksList } from '@/components/LinksList/LinksList.tsx'
 
 export const DefaultLayout: React.FC = (): React.ReactElement => {
   return (
