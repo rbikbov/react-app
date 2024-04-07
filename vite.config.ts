@@ -21,4 +21,10 @@ export default defineConfig({
       },
     ],
   },
+  server: {
+    watch: {
+      // https://github.com/vitejs/vite/issues/1153
+      usePolling: true,
+    },
+  },
 })
