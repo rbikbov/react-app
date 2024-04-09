@@ -1,5 +1,15 @@
-import { applyMiddleware, legacy_createStore as createStore } from 'redux'
-import thunk from 'redux-thunk'
-import { rootReducer } from './reducers'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { todosSlice } from './todosSlice'
+import { usersSlice } from './usersSlice'
 
-export const store = createStore(rootReducer, applyMiddleware(thunk))
+const rootReducer = combineReducers({
+  todos: todosSlice.reducer,
+  users: usersSlice.reducer,
+})
+
+export const store = configureStore({
+  reducer: rootReducer,
+})
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

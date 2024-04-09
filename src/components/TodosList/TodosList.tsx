@@ -1,9 +1,10 @@
-import { useTypedSelector } from '@/hooks/useTypedSelector'
-import { useActions } from '@/hooks/useActions'
+import { useAppSelector } from '@/hooks/useAppSelector'
 import { Paginator } from '@/components/Paginator/Paginator'
+import { useActions } from '@/hooks/useActions'
+import { StateStatus } from '@/types/stateStatus'
 
 export const TodosList: React.FC = () => {
-  const state = useTypedSelector((state) => state.todo)
+  const todosState = useAppSelector((state) => state.todos)
   const { fetchTodos } = useActions()
   const fetchTodosWithParams = ({
     page,
@@ -12,14 +13,17 @@ export const TodosList: React.FC = () => {
     page: number
     limit?: number
   }) => {
-    if (state.loading) return
+    if (todosState.status === StateStatus.pending) return
     fetchTodos({
       page,
-      limit: typeof limit === 'number' ? limit : state.pageSize,
+      limit: typeof limit === 'number' ? limit : todosState.pageSize,
     })
   }
   const handleTodosLoadBtnClicked = () => {
-    fetchTodosWithParams({ page: state.currentPage, limit: state.pageSize })
+    fetchTodosWithParams({
+      page: todosState.currentPage,
+      limit: todosState.pageSize,
+    })
   }
   const onPageChange = (page: number) => {
     fetchTodosWithParams({ page })
@@ -27,12 +31,14 @@ export const TodosList: React.FC = () => {
   return (
     <div>
       <h4>Todos list</h4>
-      {state.loading && <p>Loading...</p>}
-      {state.error && <p style={{ color: 'red' }}>Error: {state.error}</p>}
-      {state.todos.length ? (
+      {todosState.status === StateStatus.pending && <p>Loading...</p>}
+      {todosState.status === StateStatus.error && (
+        <p style={{ color: 'red' }}>Error: {todosState.errorText}</p>
+      )}
+      {todosState.data.length ? (
         <>
           <ul>
-            {state.todos.map((todo) => (
+            {todosState.data.map((todo) => (
               <li key={todo.id}>
                 <b>{todo.completed ? '+' : '-'}</b> | {todo.title} ({todo.id})
               </li>
@@ -42,21 +48,21 @@ export const TodosList: React.FC = () => {
       ) : (
         <p>Todos not found</p>
       )}
-      {!!state.itemsCount && (
+      {!!todosState.itemsCount && (
         <Paginator
-          loading={state.loading}
-          itemsCount={state.itemsCount}
-          pageSize={state.pageSize}
-          currentPage={state.currentPage}
+          loading={todosState.status === StateStatus.pending}
+          itemsCount={todosState.itemsCount}
+          pageSize={todosState.pageSize}
+          currentPage={todosState.currentPage}
           onPageChange={onPageChange}
         />
       )}
       <div>
         <button
           onClick={handleTodosLoadBtnClicked}
-          disabled={state.loading}
+          disabled={todosState.status === StateStatus.pending}
         >
-          {state.todos.length ? 'Reload' : 'Load'} todos
+          {todosState.data.length ? 'Reload' : 'Load'} todos
         </button>
       </div>
     </div>

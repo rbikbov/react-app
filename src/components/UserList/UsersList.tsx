@@ -1,19 +1,24 @@
-import { useTypedSelector } from '@/hooks/useTypedSelector'
 import { useActions } from '@/hooks/useActions'
+import { useAppSelector } from '@/hooks/useAppSelector'
+import { StateStatus } from '@/types/stateStatus'
 
 export const UsersList: React.FC = () => {
-  const state = useTypedSelector((state) => state.user)
+  const usersState = useAppSelector((state) => state.users)
   const { fetchUsers } = useActions()
-  const handleUsersLoadBtnClicked = () => fetchUsers()
+  const handleUsersLoadBtnClicked = () => {
+    fetchUsers({ page: 1, limit: 10 })
+  }
   return (
     <div>
       <h4>Users list</h4>
-      {state.loading && <p>Loading...</p>}
-      {state.error && <p style={{ color: 'red' }}>Error: {state.error}</p>}
-      {state.users.length ? (
+      {usersState.status === StateStatus.pending && <p>Loading...</p>}
+      {usersState.status === StateStatus.error && (
+        <p style={{ color: 'red' }}>Error: {usersState.errorText}</p>
+      )}
+      {usersState.data.length ? (
         <>
           <ul>
-            {state.users.map((user) => (
+            {usersState.data.map((user) => (
               <li key={user.id}>
                 <b>@{user.username}</b> | {user.name} ({user.id})
               </li>
@@ -26,9 +31,9 @@ export const UsersList: React.FC = () => {
       <div>
         <button
           onClick={handleUsersLoadBtnClicked}
-          disabled={state.loading}
+          disabled={usersState.status === StateStatus.pending}
         >
-          {state.users.length ? 'Reload' : 'Load'} users
+          {usersState.data.length ? 'Reload' : 'Load'} users
         </button>
       </div>
     </div>

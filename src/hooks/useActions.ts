@@ -1,9 +1,15 @@
-import { useDispatch } from 'react-redux'
-import { Dispatch, bindActionCreators } from 'redux'
-import actionCreators from '@/store/action-creators'
+import { useAppDispatch } from './useAppDispatch'
+import { bindActionCreators } from '@reduxjs/toolkit'
 import { useMemo } from 'react'
+import { todosActions } from '@/store/todosSlice'
+import { usersActions } from '@/store/usersSlice'
+
+const actions = {
+  ...todosActions,
+  ...usersActions,
+}
 
 export const useActions = () => {
-  const dispatch = useDispatch<Dispatch>()
-  return useMemo(() => bindActionCreators(actionCreators, dispatch), [dispatch])
+  const dispatch = useAppDispatch()
+  return useMemo(() => bindActionCreators(actions, dispatch), [dispatch])
 }

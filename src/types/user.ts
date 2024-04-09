@@ -1,3 +1,5 @@
+import { StateStatus } from './stateStatus'
+
 const userExample = {
   id: 1,
   name: 'Leanne Graham',
@@ -25,29 +27,10 @@ const userExample = {
 export type User = typeof userExample
 
 export interface UsersState {
-  users: User[]
-  loading: boolean
-  error: null | string
+  data: User[]
+  status: StateStatus
+  errorText: string
+  currentPage: number
+  pageSize: number
+  itemsCount: number
 }
-
-export enum UsersActionType {
-  FETCH_USERS = 'FETCH_USERS',
-  FETCH_USERS_SUCCESS = 'FETCH_USERS_SUCCESS',
-  FETCH_USERS_ERROR = 'FETCH_USERS_ERROR',
-}
-
-interface FetchUsersAction {
-  type: UsersActionType.FETCH_USERS
-}
-interface FetchUsersSuccessAction {
-  type: UsersActionType.FETCH_USERS_SUCCESS
-  payload: User[]
-}
-interface FetchUsersErrorAction {
-  type: UsersActionType.FETCH_USERS_ERROR
-  payload: string
-}
-export type UsersAction =
-  | FetchUsersAction
-  | FetchUsersSuccessAction
-  | FetchUsersErrorAction
