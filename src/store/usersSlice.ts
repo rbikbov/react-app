@@ -1,7 +1,7 @@
 import { requestUsersList } from '@/api/users'
 import { UsersState } from '@/types/user'
-import { handlePromise } from '@/utils/handlePromise'
-import { createAppSlice } from '@/utils/createAppSlice'
+import { handlePromise } from '@/utils/promises/handlePromise'
+import { createAppSlice } from '@/utils/store/createAppSlice'
 import { StateStatus } from '@/types/stateStatus'
 
 const initialState: UsersState = {
