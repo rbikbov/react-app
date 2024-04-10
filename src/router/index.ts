@@ -4,7 +4,7 @@ import { DefaultLayout } from '@/components/PageLayouts/DefaultLayout/DefaultLay
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <DefaultLayout />,
+    Component: DefaultLayout,
     children: [
       {
         path: '',
