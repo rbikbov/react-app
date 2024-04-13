@@ -1,3 +1,4 @@
+import { lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 import { DefaultLayout } from '@/components/PageLayouts/DefaultLayout/DefaultLayout'
 
@@ -26,6 +27,23 @@ export const router = createBrowserRouter([
           const { TodosPage } = await import('@/pages/Todos/Todos')
           return { Component: TodosPage }
         },
+      },
+      {
+        path: 'suspense',
+        children: [
+          {
+            path: '',
+            Component: lazy(() => import('@/pages/Home/Home')),
+          },
+          {
+            path: 'users',
+            Component: lazy(() => import('@/pages/Users/Users')),
+          },
+          {
+            path: 'todos',
+            Component: lazy(() => import('@/pages/Todos/Todos')),
+          },
+        ],
       },
     ],
   },

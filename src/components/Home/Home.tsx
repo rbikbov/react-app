@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import reactLogo from '@/assets/react.svg'
 import viteLogo from '/vite.svg'
 import './Home.css'
@@ -48,7 +48,7 @@ export const Home: React.FC = (): React.ReactElement => {
       <div className="card">
         <CounterButton />
         <p>
-          Edit <code>src/Home.tsx</code> and save to test HMR
+          Edit <code>src/components/Home.tsx</code> and save to test HMR
         </p>
       </div>
       <p className="read-the-docs">

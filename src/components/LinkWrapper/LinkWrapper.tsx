@@ -1,21 +1,26 @@
-import { LinkProps, useLocation } from 'react-router-dom'
-import { ReactNode } from 'react'
+import { LinkProps, useLocation, useNavigation } from 'react-router-dom'
 
 interface Props {
   linkProps: LinkProps
   render: ({
     isActive,
+    isLoading,
     linkProps,
   }: {
     isActive: boolean
+    isLoading: boolean
     linkProps: LinkProps
-  }) => ReactNode
+  }) => React.ReactNode
 }
 
 export const LinkWrapper = ({ linkProps, render }: Props) => {
   const location = useLocation()
+  const navigation = useNavigation()
   const { to } = linkProps
   const pathname = typeof to === 'string' ? to : to.pathname
   const isActive = location.pathname === pathname
-  return render({ isActive, linkProps })
+  const isLoading = navigation.location
+    ? navigation.location.pathname === pathname
+    : false
+  return render({ isActive, isLoading, linkProps })
 }

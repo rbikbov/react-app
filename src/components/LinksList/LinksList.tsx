@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { LinkWrapper } from '../LinkWrapper/LinkWrapper'
 import styles from './LinksList.module.css'
-import { FC } from 'react'
 
 interface LinkItem {
   text: string
@@ -12,18 +11,19 @@ interface Props {
   links: LinkItem[]
 }
 
-export const LinksList: FC<Props> = ({ links }: Props) => {
+export const LinksList: React.FC<Props> = ({ links }: Props) => {
   return (
     <ul className={styles.links}>
       {links.map((link) => (
         <LinkWrapper
           key={link.path}
           linkProps={{ to: link.path }}
-          render={({ isActive, linkProps }) => (
+          render={({ isActive, isLoading, linkProps }) => (
             <li
               className={[
                 styles.links__item,
                 isActive ? styles.links__item_active : '',
+                isLoading ? styles.links__item_loading : '',
               ].join(' ')}
             >
               <Link {...linkProps}>{link.text}</Link>

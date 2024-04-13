@@ -13,3 +13,17 @@
   transform: scale(1.2);
   transition: all linear 0.3s;
 }
+.links__item_loading {
+  animation-name: rotate;
+  animation-duration: 0.7s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@keyframes rotate {
+  25% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+}
