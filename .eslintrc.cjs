@@ -42,6 +42,11 @@ module.exports = {
         pathGroups: [
           { pattern: 'react', group: 'builtin' },
           { pattern: 'vite', group: 'builtin' },
+          { pattern: '~shared/**', group: 'internal' },
+          { pattern: '~entities/**', group: 'internal' },
+          { pattern: '~features/**', group: 'internal' },
+          { pattern: '~widgets/**', group: 'internal' },
+          { pattern: '~pages/**', group: 'internal' },
           { pattern: '@/**', group: 'internal' },
         ],
         pathGroupsExcludedImportTypes: ['builtin'],
@@ -55,6 +60,36 @@ module.exports = {
         ],
         'newlines-between': 'never',
         alphabetize: { order: 'asc', caseInsensitive: true },
+      },
+    ],
+    'no-restricted-imports': [
+      'error',
+      {
+        patterns: [
+          {
+            group: [
+              '~shared/*/*/**',
+              '~entities/*/**',
+              '~features/*/**',
+              '~widgets/*/**',
+              '~pages/*/**',
+              '~app/**',
+            ],
+            message:
+              'Direct access to the internal parts of the module is prohibited',
+          },
+          {
+            group: [
+              '../**/5_shared',
+              '../**/4_entities',
+              '../**/3_features',
+              '../**/2_widgets',
+              '../**/1_pages',
+              '../**/0_app',
+            ],
+            message: 'Prefer absolute imports instead of relatives',
+          },
+        ],
       },
     ],
   },

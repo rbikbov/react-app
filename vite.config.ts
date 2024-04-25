@@ -16,6 +16,32 @@ export default defineConfig({
   resolve: {
     alias: [
       {
+        find: '~app',
+        replacement: resolve(__dirname, 'src/0_app'),
+      },
+      {
+        find: '~pages',
+        replacement: resolve(__dirname, 'src/1_pages'),
+      },
+      {
+        find: '~widgets',
+        replacement: resolve(__dirname, 'src/2_widgets'),
+      },
+      {
+        find: '~features',
+        replacement: resolve(__dirname, 'src/3_features'),
+      },
+      {
+        find: '~entities',
+        replacement: resolve(__dirname, 'src/4_entities'),
+      },
+      {
+        find: '~shared',
+        replacement: resolve(__dirname, 'src/5_shared'),
+      },
+
+      // TODO: remove this alias after full FSD integration
+      {
         find: '@',
         replacement: resolve(__dirname, 'src'),
       },
