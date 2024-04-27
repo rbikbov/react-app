@@ -1,0 +1,6 @@
+.todoTitle {
+}
+
+.todoTitle_completed {
+  text-decoration: line-through;
+}

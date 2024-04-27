@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 import { LinkWrapper } from '../LinkWrapper/LinkWrapper'
 import styles from './LinksList.module.css'
@@ -20,11 +21,10 @@ export const LinksList: React.FC<Props> = ({ links }: Props) => {
           linkProps={{ to: link.path }}
           render={({ isActive, isLoading, linkProps }) => (
             <li
-              className={[
-                styles.links__item,
-                isActive ? styles.links__item_active : '',
-                isLoading ? styles.links__item_loading : '',
-              ].join(' ')}
+              className={classNames(styles.links__item, {
+                [styles.links__item_active]: isActive,
+                [styles.links__item_loading]: isLoading,
+              })}
             >
               <Link {...linkProps}>{link.text}</Link>
             </li>

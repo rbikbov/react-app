@@ -1,7 +1,9 @@
+import classNames from 'classnames'
 import { useAppSelector } from '@/hooks/useAppSelector'
 import { Paginator } from '@/components/Paginator/Paginator'
 import { useActions } from '@/hooks/useActions'
 import { StateStatus } from '@/types/stateStatus'
+import styles from './TodosList.module.css'
 
 export const TodosList: React.FC = () => {
   const todosState = useAppSelector((state) => state.todos)
@@ -40,7 +42,14 @@ export const TodosList: React.FC = () => {
           <ul>
             {todosState.data.map((todo) => (
               <li key={todo.id}>
-                <b>{todo.completed ? '+' : '-'}</b> | {todo.title} ({todo.id})
+                ({todo.id}){' '}
+                <span
+                  className={classNames(styles.todoTitle, {
+                    [styles.todoTitle_completed]: todo.completed,
+                  })}
+                >
+                  {todo.title}
+                </span>
               </li>
             ))}
           </ul>

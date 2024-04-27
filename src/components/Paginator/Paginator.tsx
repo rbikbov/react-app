@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import classNames from 'classnames'
 import styles from './Paginator.module.css'
 
 interface Props {
@@ -39,11 +40,9 @@ export const Paginator: React.FC<Props> = ({
   return (
     <ul className={styles.paginator}>
       <li
-        className={[
-          styles.paginator__item,
-          isPrevDisabled ? styles.paginator__item_disabled : '',
-          loading ? styles.paginator__item_disabled : '',
-        ].join(' ')}
+        className={classNames(styles.paginator__item, {
+          [styles.paginator__item_disabled]: isPrevDisabled || loading,
+        })}
         onClick={() =>
           !isPrevDisabled && onPageChangeWithLoading(currentPage - 1)
         }
@@ -52,11 +51,10 @@ export const Paginator: React.FC<Props> = ({
       </li>
       {pages.map((page) => (
         <li
-          className={[
-            styles.paginator__item,
-            page === currentPage ? styles.paginator__item_active : '',
-            loading ? styles.paginator__item_disabled : '',
-          ].join(' ')}
+          className={classNames(styles.paginator__item, {
+            [styles.paginator__item_active]: page === currentPage,
+            [styles.paginator__item_disabled]: loading,
+          })}
           key={page}
           onClick={() => onPageChangeWithLoading(page)}
         >
@@ -64,11 +62,9 @@ export const Paginator: React.FC<Props> = ({
         </li>
       ))}
       <li
-        className={[
-          styles.paginator__item,
-          isNextDisabled ? styles.paginator__item_disabled : '',
-          loading ? styles.paginator__item_disabled : '',
-        ].join(' ')}
+        className={classNames(styles.paginator__item, {
+          [styles.paginator__item_disabled]: isNextDisabled || loading,
+        })}
         onClick={() =>
           !isNextDisabled && onPageChangeWithLoading(currentPage + 1)
         }
