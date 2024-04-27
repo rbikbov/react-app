@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import reactLogo from '@/assets/react.svg'
+// TODO: fix eslint config and remove this line
+// eslint-disable-next-line import/no-unresolved
 import viteLogo from '/vite.svg'
 import './Home.css'
 

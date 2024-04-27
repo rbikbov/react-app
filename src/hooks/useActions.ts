@@ -1,8 +1,8 @@
-import { useAppDispatch } from './useAppDispatch'
-import { bindActionCreators } from '@reduxjs/toolkit'
 import { useMemo } from 'react'
+import { bindActionCreators } from '@reduxjs/toolkit'
 import { todosActions } from '@/store/todosSlice'
 import { usersActions } from '@/store/usersSlice'
+import { useAppDispatch } from './useAppDispatch'
 
 const actions = {
   ...todosActions,

@@ -1,8 +1,8 @@
 import { requestTodosList } from '@/api/todos'
+import { StateStatus } from '@/types/stateStatus'
 import { TodosState } from '@/types/todo'
 import { handlePromise } from '@/utils/promises/handlePromise'
 import { createAppSlice } from '@/utils/store/createAppSlice'
-import { StateStatus } from '@/types/stateStatus'
 
 const initialState: TodosState = {
   data: [],

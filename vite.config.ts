@@ -1,6 +1,6 @@
+import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
-import { fileURLToPath, URL } from 'url'
 import { checker } from 'vite-plugin-checker'
 
 // https://vitejs.dev/config/
@@ -17,7 +17,7 @@ export default defineConfig({
     alias: [
       {
         find: '@',
-        replacement: fileURLToPath(new URL('./src', import.meta.url)),
+        replacement: resolve(__dirname, 'src'),
       },
     ],
   },

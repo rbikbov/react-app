@@ -1,7 +1,7 @@
 import classNames from 'classnames'
-import { useAppSelector } from '@/hooks/useAppSelector'
 import { Paginator } from '@/components/Paginator/Paginator'
 import { useActions } from '@/hooks/useActions'
+import { useAppSelector } from '@/hooks/useAppSelector'
 import { StateStatus } from '@/types/stateStatus'
 import styles from './TodosList.module.css'
 

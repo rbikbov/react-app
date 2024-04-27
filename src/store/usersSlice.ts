@@ -1,8 +1,8 @@
 import { requestUsersList } from '@/api/users'
+import { StateStatus } from '@/types/stateStatus'
 import { UsersState } from '@/types/user'
 import { handlePromise } from '@/utils/promises/handlePromise'
 import { createAppSlice } from '@/utils/store/createAppSlice'
-import { StateStatus } from '@/types/stateStatus'
 
 const initialState: UsersState = {
   data: [],
